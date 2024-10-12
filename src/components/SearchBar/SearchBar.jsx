@@ -2,17 +2,20 @@ import css from "./SearchBar.module.css";
 import { IoIosSearch } from "react-icons/io";
 import toast, { Toaster } from "react-hot-toast";
 
-const SearchBar = ({ onSubmit }) => {
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const userValue = e.target.elements.searchValue.value.trim();
-    if (userValue === "") {
-      toast.error("Please enter a valid search value!", {
-        duration: 4000,
-        position: "top-left",
-      });
-    } else onSubmit(userValue);
-  };
+const SearchBar = ({ onSearch }) => {
+  const handleSubmit = (values, action) => {
+  //   e.preventDefault();
+  //   const userValue = e.target.elements.searchValue.value.trim();
+  //   if (userValue === "") {
+  //     toast.error("Please enter a valid search value!", {
+  //       duration: 4000,
+  //       position: "top-left",
+  //     });
+  //   } else onSubmit(userValue);
+  // };
+    onSearch(values.searchValue); 
+    action.resetForm();
+  }
   return (
     <>
       <header className={css.searchBar}>
