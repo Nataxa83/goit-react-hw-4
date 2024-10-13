@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 
 import SearchBar from "./components/SearchBar/SearchBar";
 import Loader from "./components/Loader/Loader";
-// import ImageGallery from "./components/ImageGallery/ImageGallery";
+import ImageGallery from "./components/ImageGallery/ImageGallery";
 
 const App = () => {
   const [images, setImages] = useState(null);
@@ -33,11 +33,11 @@ const App = () => {
     fetchImage();
     },[])
 
-  const onSubmit = (searchValue) => {
+  const onSubmit = (searchWord) => {
     // setImages([]);
     // setPageNumber(1);
-    setSearchValue(searchValue);
-    // console.log(searchValue);
+    setSearchValue(searchWord);
+    console.log(searchWord);
   };
 
   return (
@@ -45,21 +45,22 @@ const App = () => {
       <SearchBar onSearch={onSubmit} />
       {loading && <Loader />}
       {error && <p>Oops, something went wrong: {error}</p>}
-      {/* <ImageGallery /> */}
-      <div>
+      {images !== null &&  <ImageGallery images={images}/> }
+      {/* <div>
       <ul>
         {images !== null && images.map((image) => {
           return (
             <li key={image.id}>
                 <div>
                 <img src={image.urls.thumb} alt={image.alt_description} width={200} height={150}/>
+                <p>Likes: {image.likes}</p>
                 </div>
             </li>
 
           )
         })}
         </ul>
-      </div>
+      </div> */}
     </div>
   );
 };

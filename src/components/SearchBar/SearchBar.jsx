@@ -3,19 +3,19 @@ import { IoIosSearch } from "react-icons/io";
 import toast, { Toaster } from "react-hot-toast";
 
 const SearchBar = ({ onSearch }) => {
-  const handleSubmit = (values, action) => {
-  //   e.preventDefault();
-  //   const userValue = e.target.elements.searchValue.value.trim();
-  //   if (userValue === "") {
-  //     toast.error("Please enter a valid search value!", {
-  //       duration: 4000,
-  //       position: "top-left",
-  //     });
-  //   } else onSubmit(userValue);
-  // };
-    onSearch(values.searchValue); 
+  const handleSubmit =(values, action) => {
+    e.preventDefault();
+    const userValue = e.target.elements.searchValue.value.trim();
+    if (userValue === "") {
+      toast.error("Please enter a valid search value!", {
+        duration: 4000,
+        position: "top-left",
+      });
+    } else onSubmit(userValue);
+    onSearch(values.searchWord); 
     action.resetForm();
-  }
+  };
+  
   return (
     <>
       <header className={css.searchBar}>
@@ -24,7 +24,7 @@ const SearchBar = ({ onSearch }) => {
           <input
             className={css.input}
             type="text"
-            name="searchValue"
+            name="searchWord"
             autoComplete="off"
             autoFocus
             placeholder="Search images and photos"
