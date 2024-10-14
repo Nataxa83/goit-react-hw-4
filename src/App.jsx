@@ -1,5 +1,5 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
+import { renderImage } from "./api";
 
 import SearchBar from "./components/SearchBar/SearchBar";
 import Loader from "./components/Loader/Loader";
@@ -14,15 +14,13 @@ const App = () => {
   // console.log(searchValue);
   
   useEffect(() => {
-    // const ACCESS_KEY = 'hKPMlatOY64AlkJ4VOiBsiFkQnhoXS5yR5titRTlXn8';
+
     const fetchImage = async ()=> {
       try {
       setLoading(true);
-      const { data } = await axios.get('https://api.unsplash.com/photos/?client_id=hKPMlatOY64AlkJ4VOiBsiFkQnhoXS5yR5titRTlXn8')
-      
+      const data = await renderImage();
       // throw new Error('Something went wrong');
       setImages(data);
-
 
       } catch (error) {
     setError(error.message);

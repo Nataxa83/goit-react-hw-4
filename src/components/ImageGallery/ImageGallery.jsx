@@ -12,8 +12,7 @@ const ImageGallery = ({images}) => {
               likes={likes}
               location={location}
               className={css.imageCard}
-
-               />
+              />
             </li>
 
           )
