@@ -11,8 +11,15 @@ const App = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [searchValue, setSearchValue] = useState(null);
-  // console.log(searchValue);
+  console.log(searchValue);
+
   
+  const onSearch = (searchWord) => {
+    // setImages([]);
+    // setPageNumber(1);
+    setSearchValue(searchWord);
+  };
+
   useEffect(() => {
 
     const fetchImage = async ()=> {
@@ -32,16 +39,10 @@ const App = () => {
     fetchImage();
     },[])
 
-  const onSubmit = (searchWord) => {
-    // setImages([]);
-    // setPageNumber(1);
-    setSearchValue(searchWord);
-    console.log(searchWord);
-  };
 
   return (
     <div>
-      <SearchBar onSearch={onSubmit} />
+      <SearchBar onSearch={onSearch} />
       {loading && <Loader />}
       {error !== null && <ErrorMessage error={error}/> }
      { images !== null &&  <ImageGallery images={images}/> }

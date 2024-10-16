@@ -4,8 +4,8 @@ const ImageCard = ({small, alt_description, likes, location}) => {
     <div className={css.imageCard}>
     <img src={small} alt={alt_description} className={css.image}/>
     <div className={css.info}>
-    <p ><span className={css.likes}>Likes:</span> {likes}</p>
-    <p ><span className={css.location}>Location:</span> {location}</p>
+    <p className={css.data}><span className={css.infoTerm}>Likes:</span> {likes}</p>
+    <p className={css.data}><span className={css.infoTerm}>Location:</span> {location}</p>
     </div>
     </div>
   )
