@@ -3,12 +3,13 @@ import css from "./ImageGallery.module.css"
 const ImageGallery = ({images}) => {
   return (
     <ul className={css.gallery}>
-        {images.map(({id, alt_description, likes, urls: {small, regular}, user:{location}}) => {
+        {images.map(({id, description, likes, urls: {small, regular}, user:{location}}) => {
           return (
             <li key={id}>
               <ImageCard
               small={small} 
-              alt_description={alt_description}
+              regular={regular}
+              description={description}
               likes={likes}
               location={location}
               className={css.imageCard}

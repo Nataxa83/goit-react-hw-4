@@ -6,17 +6,17 @@ import toast, { Toaster } from "react-hot-toast";
 //   searchWord: "",
 // };
 const SearchBar = ({ onSearch }) => {
-  const handleSubmit =(values, action) => {
+  const handleSubmit =(e) => {
     e.preventDefault();
     const userValue = e.target.elements.searchWord.value.trim();
-    // if (userValue === "") {
-    //   toast.error("Please enter a valid search value!", {
-    //     duration: 4000,
-    //     position: "top-left",
-    //   });
-    // } else onSearch(userValue);              
-    onSearch(values.searchWord); 
-    action.resetForm();
+    if (userValue === "") {
+      toast.error("Please enter a valid search value!", {
+        duration: 4000,
+        position: "top-left",
+      });
+      return;
+    }  onSearch(userValue);              
+    e.target.reset();
   };
   
   return (

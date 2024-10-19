@@ -1,6 +1,6 @@
 .imageCard{ 
     width: 270px;
-    height: 250px;
+    height: 200px;
     display: flex;
     flex-direction: column;
     align-items: center;
