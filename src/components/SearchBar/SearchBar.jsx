@@ -18,6 +18,7 @@ const SearchBar = ({ onSearch }) => {
     }  onSearch(userValue);              
     e.target.reset();
   };
+
   
   return (
     <>

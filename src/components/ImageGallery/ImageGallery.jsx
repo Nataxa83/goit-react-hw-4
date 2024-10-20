@@ -1,6 +1,6 @@
 import ImageCard from "../ImageCard/ImageCard"
 import css from "./ImageGallery.module.css"
-const ImageGallery = ({images}) => {
+const ImageGallery = ({images, setSelectedImage, openModal}) => {
   return (
     <ul className={css.gallery}>
         {images.map(({id, description, likes, urls: {small, regular}, user:{location}}) => {
@@ -13,6 +13,9 @@ const ImageGallery = ({images}) => {
               likes={likes}
               location={location}
               className={css.imageCard}
+              setSelectedImage={setSelectedImage}
+              openModal={openModal}
+    
               />
             </li>
 

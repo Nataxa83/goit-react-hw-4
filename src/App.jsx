@@ -1,11 +1,13 @@
 import { useEffect, useState } from "react";
 import { renderImage } from "./api";
+import toast, { Toaster } from "react-hot-toast";
 
 import SearchBar from "./components/SearchBar/SearchBar";
 import Loader from "./components/Loader/Loader";
 import ImageGallery from "./components/ImageGallery/ImageGallery";
 import ErrorMessage from "./components/ErrorMessage/ErrorMessage";  
 import LoadMoreBtn from "./components/LoadMoreBtn/LoadMoreBtn";
+import ImageModal from "./components/ImageModal/ImageModal";
 
 const App = () => {
   const [images, setImages] = useState(null);
@@ -14,10 +16,12 @@ const App = () => {
   const [searchValue, setSearchValue] = useState(null);
   const [pageNumber, setPageNumber] = useState(1);  
   const [totalPages, setTotalPages] = useState(0);
+  const [isOpenModal, setIsOpenModal] = useState(false);
+  const [selectedImage, setSelectedImage] = useState(null);
   
   const onSearch = (searchWord) => {
     setImages([]);
-    // setPageNumber(1);
+    setPageNumber(1);
     setSearchValue(searchWord);
   };
 
@@ -25,6 +29,14 @@ const App = () => {
     setPageNumber((pageNumber) => pageNumber + 1);
     console.log(pageNumber);
   }
+
+  const openModal = () => {
+    setIsOpenModal(true);
+  };
+
+  const closeModal = () => {
+    setIsOpenModal(false);
+  };
 
   useEffect(() => {
     if (!searchValue) return;
@@ -56,9 +68,16 @@ const App = () => {
       <SearchBar onSearch={onSearch} />
       {loading && <Loader />}
       {error !== null && <ErrorMessage error={error}/> }
-     { images !== null &&  <ImageGallery images={images}/> }
+     { images !== null &&  <ImageGallery images={images}
+     openModal={openModal}
+     setSelectedImage={setSelectedImage}/> }
      
      {totalPages > pageNumber  && <LoadMoreBtn onLoadMore={onLoadMore}/>  }
+     <ImageModal
+        isOpenModal={isOpenModal}
+        closeModal={closeModal}
+        selectedImage={selectedImage}
+      />
      
     </div>
   );
