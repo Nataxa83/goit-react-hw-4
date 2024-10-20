@@ -1,8 +1,9 @@
 import css from "./ImageCard.module.css"
 import { AiTwotoneLike } from "react-icons/ai";
-const ImageCard = ({small, regular, description, likes, location, setSelectedImage, openModal}) => {
+
+const ImageCard = ({small, regular, description, likes, location, name, medium, setSelectedImage, openModal}) => {
   const handleClick = () => {
-    setSelectedImage({regular, location, description});
+    setSelectedImage({regular, location, name, medium});
     openModal();
   }
   return (  
