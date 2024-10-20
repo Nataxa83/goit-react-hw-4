@@ -1,16 +1,15 @@
 import css from "./ImageCard.module.css"
-const ImageCard = ({small, regular, description, likes, setSelectedImage, openModal}) => {
-
+import { AiTwotoneLike } from "react-icons/ai";
+const ImageCard = ({small, regular, description, likes, location, setSelectedImage, openModal}) => {
   const handleClick = () => {
-    setSelectedImage({small, regular,description});
+    setSelectedImage({regular, location, description});
     openModal();
   }
   return (  
     <div className={css.imageCard}>
     <img src={small} alt={description} className={css.image} onClick={handleClick} />
     <div className={css.info}>
-    <p className={css.data}><span className={css.infoTerm}>Likes:</span> {likes}</p>
-    {/* <p className={css.data}><span className={css.infoTerm}>Location:</span> {location}</p> */}
+    <p className={css.data}><AiTwotoneLike /> {likes}</p>
     </div>
     </div>
   )

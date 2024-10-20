@@ -10,3 +10,7 @@
     border: none;
     margin-top: 15px;
 }
+
+.btnLoadMore:hover{
+    background-color: rgb(244, 203, 150);
+}

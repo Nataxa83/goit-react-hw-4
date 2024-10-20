@@ -30,19 +30,20 @@ const App = () => {
     console.log(pageNumber);
   }
 
-  const openModal = () => {
+  const openModal = (image) => {
+    //setSelectedImage(image);
     setIsOpenModal(true);
   };
 
   const closeModal = () => {
     setIsOpenModal(false);
+    setSelectedImage(null);
   };
 
   useEffect(() => {
     if (!searchValue) return;
     const fetchImageByValue = async ()=> {
       try {
-        // setError(false);
       setLoading(true);
       const data = await renderImage(searchValue, pageNumber);
       // throw new Error('Something went wrong');
@@ -68,16 +69,20 @@ const App = () => {
       <SearchBar onSearch={onSearch} />
       {loading && <Loader />}
       {error !== null && <ErrorMessage error={error}/> }
-     { images !== null &&  <ImageGallery images={images}
-     openModal={openModal}
-     setSelectedImage={setSelectedImage}/> }
+     { images !== null &&  
+     <ImageGallery images={images}
+                    openModal={openModal}
+                    setSelectedImage={setSelectedImage}/> }
      
      {totalPages > pageNumber  && <LoadMoreBtn onLoadMore={onLoadMore}/>  }
-     <ImageModal
+     
+     {<ImageModal
         isOpenModal={isOpenModal}
         closeModal={closeModal}
-        selectedImage={selectedImage}
-      />
+        regular={selectedImage?.regular}
+        location={selectedImage?.location}
+        description={selectedImage?.description}
+      />}
      
     </div>
   );
