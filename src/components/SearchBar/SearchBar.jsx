@@ -2,9 +2,7 @@ import css from "./SearchBar.module.css";
 import { IoIosSearch } from "react-icons/io";
 import toast, { Toaster } from "react-hot-toast";
 
-// const INITIAL_VALUES = {
-//   searchWord: "",
-// };
+
 const SearchBar = ({ onSearch }) => {
   const handleSubmit =(e) => {
     e.preventDefault();
@@ -12,10 +10,14 @@ const SearchBar = ({ onSearch }) => {
     if (userValue === "") {
       toast.error("Please enter a valid search value!", {
         duration: 4000,
-        position: "top-left",
+        position: "top-center",
+        style: {marginTop: 60}
       });
       return;
-    }  onSearch(userValue);              
+    }  
+    
+    
+    onSearch(userValue);              
     e.target.reset();
   };
 
