@@ -9,7 +9,7 @@ const SearchBar = ({ onSearch }) => {
     const userValue = e.target.elements.searchWord.value.trim();
     if (userValue === "") {
       toast.error("Please enter a valid search value!", {
-        duration: 4000,
+        duration: 2000,
         position: "top-center",
         style: {marginTop: 60}
       });

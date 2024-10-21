@@ -5,7 +5,7 @@ axios.defaults.baseURL = "https://api.unsplash.com";
 
 axios.defaults.params = {
   orientation: "landscape",
-  per_page: 15,
+  per_page: 2,
 
 };
 export const renderImage = async (query, page) => {

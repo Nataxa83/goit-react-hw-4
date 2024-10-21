@@ -77,12 +77,14 @@ const App = () => {
     <div>
       <SearchBar onSearch={onSearch} />
       {error !== null && <ErrorMessage error={error}/> }
-     { images !== null &&  
+     
+     { (images !== null && images.length > 0) &&  
      <ImageGallery images={images}
      openModal={openModal}
      setSelectedImage={setSelectedImage}/> }
-     
+
      {loading && <Loader />}
+
      {totalPages > pageNumber  && <LoadMoreBtn onLoadMore={onLoadMore}/>  }
      
      {<ImageModal
