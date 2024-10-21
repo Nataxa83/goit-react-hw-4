@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { renderImage } from "./api";
-import toast, { Toaster } from "react-hot-toast";
+import { toast } from "react-hot-toast";
 
 import SearchBar from "./components/SearchBar/SearchBar";
 import Loader from "./components/Loader/Loader";
@@ -30,8 +30,7 @@ const App = () => {
     console.log(pageNumber);
   }
 
-  const openModal = (image) => {
-    //setSelectedImage(image);
+  const openModal = () => {
     setIsOpenModal(true);
   };
 
@@ -46,20 +45,20 @@ const App = () => {
       try {
         setLoading(true);
       const data = await renderImage(searchValue, pageNumber);
-            if (data.total_pages === 0) {
-              toast.error("No images found", {
-                duration: 4000,
-                position: "top-center",
-                style: {marginTop: 60}
-              });
-              return;
-            }
       // throw new Error('Something went wrong');
-    
-
-        setImages((prevState) => pageNumber === 1 ? data.results : [...prevState, ...data.results]);
-         setTotalPages(data.total_pages);
-
+      
+      
+      setImages((prevState) => pageNumber === 1 ? data.results : [...prevState, ...data.results]);
+      setTotalPages(data.total_pages);
+      
+      if (data.total_pages === 0) {
+        toast.error("No images found", {
+          duration: 4000,
+          position: "top-center",
+          style: {marginTop: 60}
+        });
+        return;
+      }
       
 
       } catch (error) {
